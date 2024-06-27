@@ -1,4 +1,5 @@
-K-Scholar
+# K-Scholar
+
 Welcome to K-Scholar - your one-stop shop for everything related to scholarships at KNUST (Kwame Nkrumah University of Science and Technology). This app is designed to help students easily find, apply for, and manage scholarships, ensuring that financial support is accessible to all who need it.
 
 Features
