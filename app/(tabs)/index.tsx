@@ -10,7 +10,7 @@ const HomeScreen = () => {
           source={{ uri: 'https://example.com/profile-picture.jpg' }}
           style={styles.profilePic}
         />
-        <Text style={styles.headerText}>Explore Scholarships</Text>
+        <Text style={styles.headerText}>K-Scholar</Text>
         <Ionicons name="search" size={24} color="black" />
       </View>
       
@@ -102,8 +102,9 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   headerText: {
-    fontSize: 18,
+    fontSize: 28,
     fontWeight: 'bold',
+    marginVertical: -10
   },
   content: {
     padding: 15,
