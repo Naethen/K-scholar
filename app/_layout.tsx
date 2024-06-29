@@ -8,7 +8,7 @@ import React from 'react';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
+
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -26,7 +26,6 @@ export default function RootLayout() {
     if (loaded) {
       const prepare = async () => {
         try {
-          // Hide the splash screen
           await SplashScreen.hideAsync();
         } catch (e) {
           console.warn(e);

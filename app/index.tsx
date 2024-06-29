@@ -9,8 +9,8 @@ const SignInScreen = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   const handleSubmit = () => {
-    // Here you would typically handle the authentication logic
-    // For now, we'll just navigate to the tabs
+    // handle the authentication logic here
+    // I don't know how to do it so you can fill in
     router.replace('/(tabs)');
   };
 
