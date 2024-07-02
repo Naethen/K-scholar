@@ -1,17 +1,21 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 const HomeScreen = () => {
+  const router = useRouter();
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={{ uri: 'https://example.com/profile-picture.jpg' }}
+          source={{ uri: 'https://th.bing.com/th/id/OIP.yhqkR9B2hKbtwwZ8bPNbQQHaHw?w=191&h=200&c=7&o=5&dpr=1.3&pid=1.7' }}
           style={styles.profilePic}
         />
         <Text style={styles.headerText}>K-Scholar</Text>
-        <Ionicons name="search" size={24} color="black" />
+        <TouchableOpacity onPress={() => router.push('/search')}>
+          <Ionicons name="search" size={24} color="black" />
+        </TouchableOpacity>
       </View>
       
       <View style={styles.content}>
