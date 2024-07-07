@@ -32,7 +32,7 @@ const HomeScreen = () => {
             <Ionicons name="information-circle-outline" size={24} color="black" />
           </View>
           <View style={styles.progressBar}>
-            <View style={[styles.progress, { width: '50%' }]} />
+            <View style={[styles.progress, { width: '30%' }]} />
           </View>
           <TouchableOpacity style={styles.applyButton}>
             <Text style={styles.applyButtonText}>Apply Now</Text>

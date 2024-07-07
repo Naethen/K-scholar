@@ -41,6 +41,17 @@ const ExploreScreen = () => {
           <Text style={styles.applyButtonText}>Apply Now</Text>
         </TouchableOpacity>
       </View>
+
+      <View style={styles.scholarshipCard}>
+        <Image 
+          source={{uri: 'https://th.bing.com/th/id/OIP.Hs8UHK1fSTCQTR88qyMB_wHaD4?rs=1&pid=ImgDetMain'}} 
+          style={styles.scholarshipImage}/>
+        <Text style={styles.scholarshipItemTitle}>GNPC Foundation Local Scholarhsip</Text>
+        <Text style={styles.scholarshipDescription}>For undergraduates and postgraduates pursuing{'\n'}degrees in Ghana</Text>
+        <TouchableOpacity style={styles.applyButton}>
+          <Text style={styles.applyButtonText}>Apply Now</Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
 
       <Text style={styles.sectionTitle}>All Scholarships</Text>
@@ -112,6 +123,12 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 16,
     marginBottom: 16,
+    marginEnd: 15,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+  textContainer: {
+    flex: 1,
   },
   scholarshipImage: {
     width: '100%',
