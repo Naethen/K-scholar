@@ -1,52 +1,105 @@
-import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
-import { router } from 'expo-router';
+import React, { useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, Dimensions, Animated } from 'react-native';
+import { useRouter } from 'expo-router';
+import LottieView from 'lottie-react-native';
 
 const { width, height } = Dimensions.get('window');
 
 const SplashScreen = () => {
+  const router = useRouter();
+  const backgroundColor = useRef(new Animated.Value(0)).current;
+  const titleSlide = useRef(new Animated.Value(-100)).current;
+  const subtitleSlide = useRef(new Animated.Value(-100)).current;
+
   useEffect(() => {
+    Animated.timing(backgroundColor, {
+      toValue: 1,
+      duration: 3000,
+      useNativeDriver: false,
+    }).start(() => {
+      Animated.timing(titleSlide, {
+        toValue: 0,
+        duration: 1000,
+        useNativeDriver: true,
+      }).start();
+
+      Animated.timing(subtitleSlide, {
+        toValue: 0,
+        duration: 1000,
+        useNativeDriver: true,
+      }).start();
+    });
+
     const timer = setTimeout(() => {
       router.replace('/signin');
-    }, 3000);
+    }, 7000); // Total time = 3s background + 1s title + 1s subtitle + 2s idle
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [backgroundColor, titleSlide, subtitleSlide, router]);
+
+  const backgroundColorInterpolation = backgroundColor.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['#000000', '#228B22'],
+  });
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={require('../assets/images/sch icon.jpg')} // Adjust the path as needed
-        style={styles.logo}
-        resizeMode="contain"
+    <Animated.View style={[styles.container, { backgroundColor: backgroundColorInterpolation }]}>
+      <LottieView
+        source={require('../assets/images/Welcome.json')}
+        autoPlay
+        loop={false}
+        style={styles.animation}
+        onAnimationFinish={() => {
+          Animated.timing(titleSlide, {
+            toValue: 0,
+            duration: 1000,
+            useNativeDriver: true,
+          }).start();
+
+          Animated.timing(subtitleSlide, {
+            toValue: 0,
+            duration: 1000,
+            useNativeDriver: true,
+          }).start();
+        }}
       />
-      <Text style={styles.title}>K-scholar</Text>
-      <Text style={styles.subtitle}>Your scholarship at your fingertips</Text>
-    </View>
+      <Animated.Text style={[styles.title, { transform: [{ translateY: titleSlide }] }]}>
+        K-scholar
+      </Animated.Text>
+      <Animated.Text style={[styles.subtitle, { transform: [{ translateY: subtitleSlide }] }]}>
+        Your scholarship at your fingertips
+      </Animated.Text>
+    </Animated.View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#228B22',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  logo: {
-    width: width * 0.8,
-    height: height * 0.3,
+  animation: {
+    width: width,
+    height: height * 0.4,
+    tintColor: '#ffffff',
   },
   title: {
-    fontSize: 32,
+    fontSize: 36,
     fontWeight: 'bold',
     color: '#ffffff',
-    marginTop: 20,
+    marginTop: 30,
+    textAlign: 'center',
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 10,
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: 20,
     color: '#ffffff',
-    marginTop: 10,
+    marginTop: 15,
+    textAlign: 'center',
+    fontStyle: 'italic',
   },
 });
 
