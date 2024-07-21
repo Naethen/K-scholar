@@ -8,10 +8,12 @@ const HomeScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
+        <TouchableOpacity onPress={() => router.push('/profile')}>
         <Image
           source={{ uri: 'https://th.bing.com/th/id/OIP.yhqkR9B2hKbtwwZ8bPNbQQHaHw?w=191&h=200&c=7&o=5&dpr=1.3&pid=1.7' }}
           style={styles.profilePic}
         />
+        </TouchableOpacity>
         <Text style={styles.headerText}>K-Scholar</Text>
         <TouchableOpacity onPress={() => router.push('/search')}>
           <Ionicons name="search" size={24} color="black" />
