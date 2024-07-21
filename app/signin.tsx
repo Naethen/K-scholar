@@ -1,10 +1,10 @@
-import { Image, StyleSheet, Platform } from 'react-native';
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import { router } from 'expo-router';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, Image } from 'react-native';
+import { useRouter } from 'expo-router';
 
 const SignInScreen = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const router = useRouter();
 
   const handleSubmit = () => {
     // handle the authentication logic here
@@ -17,24 +17,23 @@ const SignInScreen = () => {
       <View style={styles.header}>
         <Text style={styles.headerText}>K-Scholar</Text>
       </View>
-
       <View style={styles.content}>
         <Text style={styles.title}>Welcome to K-Scholar</Text>
         <Text style={styles.subtitle}>Login to your account or create a new one</Text>
-
         <View style={styles.toggleContainer}>
           <TouchableOpacity
             style={[styles.toggleButton, isLogin ? styles.activeToggle : {}]}
-            onPress={() => setIsLogin(true)}>
+            onPress={() => setIsLogin(true)}
+          >
             <Text style={styles.toggleText}>Login</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.toggleButton, !isLogin ? styles.activeToggle : {}]}
-            onPress={() => setIsLogin(false)}>
+            onPress={() => setIsLogin(false)}
+          >
             <Text style={styles.toggleText}>Register</Text>
           </TouchableOpacity>
         </View>
-
         {isLogin ? (
           <View>
             <TextInput style={styles.input} placeholder="Email" />
@@ -45,9 +44,9 @@ const SignInScreen = () => {
             </View>
             <Text style={styles.forgotPassword}>Forgot Password?</Text>
             <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-            <Text style={styles.buttonText}>Login</Text>
-          </TouchableOpacity>
-        </View>
+              <Text style={styles.buttonText}>Login</Text>
+            </TouchableOpacity>
+          </View>
         ) : (
           <View>
             <TextInput style={styles.input} placeholder="Full Name" />
@@ -59,13 +58,15 @@ const SignInScreen = () => {
               <Text style={styles.checkboxLabel}>I agree to the terms and conditions</Text>
             </View>
             <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-            <Text style={styles.buttonText}>Register</Text>
-          </TouchableOpacity>
-        </View>
-      )}</View>
+              <Text style={styles.buttonText}>Register</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      </View>
     </ScrollView>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
@@ -76,11 +77,6 @@ const styles = StyleSheet.create({
     padding: 15,
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  icon: {
-    width: 30,
-    height: 30,
-    marginRight: 10,
   },
   headerText: {
     color: 'white',
@@ -94,7 +90,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   subtitle: {
     fontSize: 16,

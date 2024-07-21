@@ -41,7 +41,7 @@ const HomeScreen = () => {
         
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Upcoming Deadlines</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => router.push('/calendar')}>
             <Text style={styles.viewAll}>VIEW CALENDAR</Text>
           </TouchableOpacity>
         </View>

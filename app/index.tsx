@@ -45,7 +45,7 @@ const SplashScreen = () => {
   return (
     <Animated.View style={[styles.container, { backgroundColor: backgroundColorInterpolation }]}>
       <LottieView
-        source={require('../assets/images/Welcome.json')}
+        source={require('../assets/images/welcome.json')}
         autoPlay
         loop={false}
         style={styles.animation}
