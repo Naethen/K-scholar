@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 const ExploreScreen = () => {
+  const router = useRouter();
   return (
     <ScrollView style={styles.container}>
       
@@ -25,7 +27,7 @@ const ExploreScreen = () => {
         />
         <Text style={styles.scholarshipTitle}>Hulede Foundation Scholarship-KNUST</Text>
         <Text style={styles.scholarshipDescription}>Full tuition for top-performing students.</Text>
-        <TouchableOpacity style={styles.applyButton}>
+        <TouchableOpacity style={styles.applyButton} onPress={() => router.push('/details')}>
           <Text style={styles.applyButtonText}>Apply Now</Text>
         </TouchableOpacity>
       </View>
@@ -37,7 +39,7 @@ const ExploreScreen = () => {
         />
         <Text style={styles.scholarshipTitle}>MasterCard Scholarship Foundation-KNUST</Text>
         <Text style={styles.scholarshipDescription}>Full tuition for brilliant but needy students.</Text>
-        <TouchableOpacity style={styles.applyButton}>
+        <TouchableOpacity style={styles.applyButton} onPress={() => router.push('/details')}>
           <Text style={styles.applyButtonText}>Apply Now</Text>
         </TouchableOpacity>
       </View>
@@ -48,7 +50,7 @@ const ExploreScreen = () => {
           style={styles.scholarshipImage}/>
         <Text style={styles.scholarshipItemTitle}>GNPC Foundation Local Scholarhsip</Text>
         <Text style={styles.scholarshipDescription}>For undergraduates and postgraduates pursuing{'\n'}degrees in Ghana</Text>
-        <TouchableOpacity style={styles.applyButton}>
+        <TouchableOpacity style={styles.applyButton} onPress={() => router.push('/details')}>
           <Text style={styles.applyButtonText}>Apply Now</Text>
         </TouchableOpacity>
       </View>
@@ -59,7 +61,7 @@ const ExploreScreen = () => {
       <View style={styles.scholarshipItem}>
         <Text style={styles.scholarshipItemTitle}>Edu Fondazione Scholarship</Text>
         <Text style={styles.scholarshipItemDescription}>For students of needy background.</Text>
-        <TouchableOpacity style={styles.applyButton}>
+        <TouchableOpacity style={styles.applyButton} onPress={() => router.push('/details')}>
           <Text style={styles.applyButtonText}>Apply Now</Text>
         </TouchableOpacity>
       </View>
@@ -67,7 +69,7 @@ const ExploreScreen = () => {
       <View style={styles.scholarshipItem}>
         <Text style={styles.scholarshipItemTitle}>Renewal - Hulede Foundation KNUST Scholarship</Text>
         <Text style={styles.scholarshipItemDescription}>For students excelling in sciences and engineering.</Text>
-        <TouchableOpacity style={styles.applyButton}>
+        <TouchableOpacity style={styles.applyButton} onPress={() => router.push('/details')}>
           <Text style={styles.applyButtonText}>Apply Now</Text>
         </TouchableOpacity>
       </View>
@@ -75,7 +77,7 @@ const ExploreScreen = () => {
       <View style={styles.scholarshipItem}>
         <Text style={styles.scholarshipItemTitle}>Educational Pathways International Scholarships</Text>
         <Text style={styles.scholarshipItemDescription}>For students from poor living conditions</Text>
-        <TouchableOpacity style={styles.applyButton}>
+        <TouchableOpacity style={styles.applyButton} onPress={() => router.push('/details')}>
           <Text style={styles.applyButtonText}>Apply Now</Text>
         </TouchableOpacity>
       </View>

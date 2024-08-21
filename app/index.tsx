@@ -18,13 +18,13 @@ const SplashScreen = () => {
       useNativeDriver: false,
     }).start(() => {
       Animated.timing(titleSlide, {
-        toValue: 0,
+        toValue: -100,
         duration: 1000,
         useNativeDriver: true,
       }).start();
 
       Animated.timing(subtitleSlide, {
-        toValue: 0,
+        toValue: -100,
         duration: 1000,
         useNativeDriver: true,
       }).start();
@@ -50,17 +50,7 @@ const SplashScreen = () => {
         loop={false}
         style={styles.animation}
         onAnimationFinish={() => {
-          Animated.timing(titleSlide, {
-            toValue: 0,
-            duration: 1000,
-            useNativeDriver: true,
-          }).start();
-
-          Animated.timing(subtitleSlide, {
-            toValue: 0,
-            duration: 1000,
-            useNativeDriver: true,
-          }).start();
+          
         }}
       />
       <Animated.Text style={[styles.title, { transform: [{ translateY: titleSlide }] }]}>

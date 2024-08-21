@@ -9,9 +9,12 @@ const CalendarScreen = () => {
   const currentDate = new Date().toISOString().split('T')[0];
 
   // Example upcoming deadlines (please replace this with actual data from the backend)
-  const upcomingDeadlines = {
+  const upcomingDeadlines: Record<string, { marked: boolean; dotColor: string }> = {
     '2024-07-15': { marked: true, dotColor: 'red' },
     '2024-07-25': { marked: true, dotColor: 'red' },
+    '2024-08-20': { marked: true, dotColor: 'red' },
+    '2024-08-23': { marked: true, dotColor: 'red' },
+    '2024-08-27': { marked: true, dotColor: 'red' },
   };
 
   return (
@@ -53,7 +56,11 @@ const CalendarScreen = () => {
       {selectedDate && (
         <View style={styles.eventContainer}>
           <Text style={styles.eventText}>Selected Date: {selectedDate}</Text>
-          {/* This will be to fetch and display events for the selected date */}
+          {upcomingDeadlines[selectedDate] ? (
+            <Text style={styles.yesEventText}>Deadline approaching.</Text>
+          ) : (
+            <Text style={styles.noEventText}>No current deadline available.</Text>
+          )}
         </View>
       )}
     </SafeAreaView>
@@ -105,6 +112,16 @@ const styles = StyleSheet.create({
   eventText: {
     fontSize: 18,
     fontWeight: 'semibold',
+    color: '#2d4150',
+  },
+  yesEventText: {
+    fontSize: 16,
+    padding: 12,
+    color: '#ff0000',
+  },
+  noEventText: {
+    fontSize: 16,
+    padding: 12,
     color: '#2d4150',
   },
 });

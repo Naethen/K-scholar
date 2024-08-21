@@ -59,7 +59,7 @@ const HomeScreen = () => {
         
         <View style={styles.card}>
           <View style={styles.cardHeader}>
-            <Text style={styles.cardTitle}>Update Profile Information</Text>
+            <Text style={styles.cardTitle}>Update Application Profile</Text>
             <Ionicons name="information-circle-outline" size={24} color="black" />
           </View>
           <Text style={styles.cardSubtitle}>Keep your profile up to date</Text>
