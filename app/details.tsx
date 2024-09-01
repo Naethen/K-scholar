@@ -1,224 +1,149 @@
-import React, { useState, ReactNode } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import React from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, Linking, Image } from 'react-native';
 
-interface ExpandableItemProps {
-  title: string;
-  children: ReactNode;
-}
-
-const ExpandableItem: React.FC<ExpandableItemProps> = ({ title, children }) => {
-  const [expanded, setExpanded] = useState(false);
+const ScholarshipDetails = () => {
+  const handleApplyNow = () => {
+    const url = 'https://mcf.knust.edu.gh/scholarship-application/';
+    Linking.openURL(url).catch((err) => {
+      Alert.alert('Error', 'Failed to open the application page. Please try again later.');
+      console.error("Failed to open URL:", err);
+    });
+  };
 
   return (
-    <View style={styles.expandableItem}>
-      <TouchableOpacity onPress={() => setExpanded(!expanded)} style={styles.expandableHeader}>
-        <Text style={styles.expandableTitle}>{title}</Text>
-        <Icon name={expanded ? 'expand-less' : 'expand-more'} size={24} color="#fff" />
-      </TouchableOpacity>
-      {expanded && <View style={styles.expandableContent}>{children}</View>}
-    </View>
-  );
-};
+    <ScrollView style={styles.container}>
+      {/* Scholarship Overview */}
+      <Text style={styles.title}>MasterCard Foundation Scholarship - KNUST</Text>
+      <View>
+      <Image
+          source={{ uri: 'https://th.bing.com/th/id/OIP.29rlj59jt1_2SfceyMjLRQAAAA?w=252&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7' }}
+          style={styles.scholarshipImage}
+        />
+      </View>
+      <Text style={styles.sectionTitle}>Scholarship Overview</Text>
+      <Text style={styles.text}>
+        The MasterCard Foundation Scholarship at KNUST provides full tuition coverage for brilliant but needy students.
+        The scholarship is aimed at students who demonstrate academic excellence and leadership potential.
+      </Text>
 
-const ScholarshipDetails: React.FC = () => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <Text style={styles.header}>Scholarship Details</Text>
-
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Scholarship Details</Text>
-          <Text style={styles.itemContent}>
-The [Scholarship Name] is designed to support outstanding students who demonstrate academic excellence, leadership potential, and a commitment to community service. This scholarship provides financial assistance to help cover tuition, books, and other educational expenses, enabling recipients to focus on their studies and personal development. Open to [specific group, e.g., undergraduate or graduate students] in [specific field of study or any field], the scholarship aims to foster future leaders who will contribute positively to society. Applicants must meet the eligibility criteria and submit all required documents by the specified deadline.</Text>
-          
-          <ExpandableItem title="Essay Submission">
-            <Text style={styles.input}>Submit your essay here</Text>
-          </ExpandableItem>
-          <View>
-          <ExpandableItem title="Passport Picture Submission">
-                        
-            <Text style={styles.input}>Attach passport picture here <Ionicons name="attach" size={23} color="black" /></Text>
-          </ExpandableItem>
-          </View>
-        </View>
-
-
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Application status</Text>
-          <ExpandableItem title="Payment method selection">
-            <Text style={styles.itemContent}>Select your payment method</Text>
-            <Text style={styles.itemContent}>1. Mobile Money</Text>
-            <Text style={styles.itemContent}>2. Card</Text>
-          </ExpandableItem>
-          <ExpandableItem title="Donate to Scholarship fund">
-            <Text style={styles.itemContent}>Optional: Make a donation</Text>
-          </ExpandableItem>
-        </View>
-      </ScrollView>
-
-      <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Selected scholarship</Text>
-          <View style={styles.scholarshipItem}>
-            <Text style={styles.scholarshipName}>Description</Text>
-            <Text style={styles.scholarshipAmount}>GHC 200.00</Text>
-            <View style={styles.progressBar}>
-              <View style={[styles.progress, { width: '100%' }]} />
-            </View>
-          </View>
-        </View>
-
-      <View style={styles.bottomButtons}>
-        <TouchableOpacity style={styles.viewCartButton}>
-          <Text style={styles.buttonText}>Go to Website</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.payButton}>
-          <Text style={styles.buttonText}>Apply</Text>
-        </TouchableOpacity>
+      {/* Eligibility Criteria */}
+      <Text style={styles.sectionTitle}>Eligibility Criteria</Text>
+      <View style={styles.listItem}>
+        <Text style={styles.bulletPoint}>•</Text>
+        <Text style={styles.text}>Must be a citizen of an African country.</Text>
+      </View>
+      <View style={styles.listItem}>
+        <Text style={styles.bulletPoint}>•</Text>
+        <Text style={styles.text}>Must have a proven record of academic excellence with a minimum GPA of 3.0.</Text>
+      </View>
+      <View style={styles.listItem}>
+        <Text style={styles.bulletPoint}>•</Text>
+        <Text style={styles.text}>Must demonstrate leadership potential and commitment to giving back to the community.</Text>
+      </View>
+      <View style={styles.listItem}>
+        <Text style={styles.bulletPoint}>•</Text>
+        <Text style={styles.text}>Must be from a financially disadvantaged background.</Text>
       </View>
 
-    </SafeAreaView>
+      {/* Application Requirements */}
+      <Text style={styles.sectionTitle}>Application Requirements</Text>
+      <View style={styles.listItem}>
+        <Text style={styles.bulletPoint}>•</Text>
+        <Text style={styles.text}>Completed application form.</Text>
+      </View>
+      <View style={styles.listItem}>
+        <Text style={styles.bulletPoint}>•</Text>
+        <Text style={styles.text}>Personal essay (500 words) outlining your academic achievements, leadership experience, and future goals.</Text>
+      </View>
+      <View style={styles.listItem}>
+        <Text style={styles.bulletPoint}>•</Text>
+        <Text style={styles.text}>Two letters of recommendation from academic or community leaders.</Text>
+      </View>
+      <View style={styles.listItem}>
+        <Text style={styles.bulletPoint}>•</Text>
+        <Text style={styles.text}>Proof of financial need (e.g., family income statement).</Text>
+      </View>
+      <View style={styles.listItem}>
+        <Text style={styles.bulletPoint}>•</Text>
+        <Text style={styles.text}>Copy of your academic transcripts.</Text>
+      </View>
+
+      {/* Deadlines */}
+      <Text style={styles.sectionTitle}>Deadlines</Text>
+      <Text style={styles.text}>Application Deadline: September 30, 2024</Text>
+      <Text style={styles.text}>Notification Date: November 15, 2024</Text>
+
+      {/* Benefits */}
+      <Text style={styles.sectionTitle}>Scholarship Benefits</Text>
+      <Text style={styles.text}>• Full tuition coverage.</Text>
+      <Text style={styles.text}>• Accommodation and living expenses.</Text>
+      <Text style={styles.text}>• Leadership training and mentorship opportunities.</Text>
+
+      {/* Contact Information */}
+      <Text style={styles.sectionTitle}>Contact Information</Text>
+      <Text style={styles.text}>For more information, contact:</Text>
+      <Text style={styles.text}>Email: mastercard@knust.edu.gh</Text>
+      <Text style={styles.text}>Phone: +233 20 000 0000</Text>
+
+      {/* Apply Now Button */}
+      <TouchableOpacity style={styles.applyButton} onPress={handleApplyNow}>
+        <Text style={styles.applyButtonText}>Apply Now</Text>
+      </TouchableOpacity>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2c2c2c',
+    backgroundColor: '#e0f2e0',
+    padding: 16,
   },
-  header: {
+  title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#fff',
-    padding: 16,
-
-  },
-  section: {
-    marginBottom: 20,
+    color: '#4a90e2',
+    marginBottom: 16,
   },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
-    color: '#fff',
-    marginBottom: 10,
-    paddingHorizontal: 16,
+    color: '#333',
+    marginBottom: 8,
+    marginTop: 16,
   },
-  expandableItem: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#444',
+  scholarshipImage: {
+    width: '100%',
+    height: 300,
+    borderRadius: 8,
+    marginBottom: 12,
   },
-  expandableHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 16,
-  },
-  expandableTitle: {
+  text: {
     fontSize: 16,
-    color: '#fff',
+    color: '#666',
+    marginBottom: 8,
   },
-  expandableContent: {
-    padding: 16,
-  },
-  itemContent: {
-    color: '#ccc',
-    marginLeft: 15,
-  },
-  input: {
-    backgroundColor: 'white',
-    borderWidth: 1,
-    marginTop: -20,
-    textAlign: 'center',
-    height: 50,
-    borderColor: '#ccc',
-    padding: 10,
-    marginBottom: 10,
-    borderRadius: 5,
-  },
-  upgradePlan: {
-    backgroundColor: '#444',
-    padding: 8,
-    borderRadius: 4,
-    alignSelf: 'flex-start',
-    marginLeft: 16,
-    marginBottom: 10,
-  },
-  upgradePlanText: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  scholarshipItem: {
-    backgroundColor: '#444',
-    borderRadius: 8,
-    padding: 16,
-    marginHorizontal: 16,
-  },
-  scholarshipName: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#fff',
-  },
-  scholarshipAmount: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginVertical: 8,
-    textAlign: 'center',
-  },
-  progressBar: {
-    height: 8,
-    backgroundColor: '#666',
-    borderRadius: 4,
-    marginVertical: 8,
-  },
-  progress: {
-    height: '100%',
-    backgroundColor: '#4CAF50',
-    borderRadius: 4,
-  },
-  appliedLabel: {
-    backgroundColor: '#4CAF50',
-    paddingVertical: 4,
-    paddingHorizontal: 8,
-    borderRadius: 4,
-    alignSelf: 'flex-start',
-  },
-  appliedText: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  bottomButtons: {
+  listItem: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 16,
+    marginBottom: 8,
   },
-  viewCartButton: {
-    backgroundColor: '#666',
-    padding: 12,
-    borderRadius: 8,
-    flex: 1,
+  bulletPoint: {
+    fontSize: 20,
+    color: '#666',
     marginRight: 8,
   },
-  payButton: {
-    backgroundColor: '#4CAF50',
-    padding: 12,
+  applyButton: {
+    backgroundColor: '#02B200',
+    padding: 16,
     borderRadius: 8,
-    flex: 1,
-    marginLeft: 8,
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 30,
   },
-  buttonText: {
+  applyButtonText: {
+    fontSize: 18,
     color: '#fff',
     fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  navBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    backgroundColor: '#1c1c1c',
-    paddingVertical: 12,
   },
 });
 
