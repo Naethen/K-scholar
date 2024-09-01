@@ -10,8 +10,8 @@ const CalendarScreen = () => {
 
   // Example upcoming deadlines (please replace this with actual data from the backend)
   const upcomingDeadlines: Record<string, { marked: boolean; dotColor: string }> = {
-    '2024-07-15': { marked: true, dotColor: 'red' },
-    '2024-07-25': { marked: true, dotColor: 'red' },
+    '2024-09-02': { marked: true, dotColor: 'red' },
+    '2024-09-30': { marked: true, dotColor: 'red' },
     '2024-08-20': { marked: true, dotColor: 'red' },
     '2024-08-23': { marked: true, dotColor: 'red' },
     '2024-08-27': { marked: true, dotColor: 'red' },
